@@ -1,53 +1,13 @@
-# Problem Hook & Value Proposition: [StreamLine / RouteLogic / your initiative]
+# Problem Hook & Value Proposition (Module 1)
 
-> **Module 1 · ★ Deliverable 1.** Repo file `01-product-thinking/problem-hook.md` — part of your submission.
-> Do the lab in the **Module 1 · Exercise 2 Guide** (linked from the Module 1 deck), then click **⬇ Download .md** — it saves as this exact file. Commit it here.
-> It becomes the **Problem, Value & Hypothesis** slide of your Module 6 final deck. (Your Module 1 · Exercise 1 discovery map lands in `strategic-map.md`.)
+## Responses
+- **Chosen path, which scenario are you committing to? (StreamLine or RouteLogic, or your own):** RouteLogic
+- **Strategic crisis, based on the brief, if the company does nothing for 12 months, what happens to its market position?:** If we do nothing for 12 months, the company will probably lose its largest enterprise account to the leaner competitor. That would give the competitor a reference customer, and other fleets would follow. Dispatchers would keep using RouteLogic less until it was only the C-suite’s reporting tool, which leaves it exposed whenever contracts come up for renewal. We’d go from market leader to “powerful but slow” legacy software.
+- **Moment of misery, what is the user likely doing outside the product (Google, spreadsheets, a competitor) because your tool isn’t serving them?:** The user is currently forced to coordinate the live fleet outside RouteLogic. They track driver status and reroutes in spreadsheets or whiteboards, handle urgent changes over WhatsApp, calls and texts, and check Google Maps for traffic. Then they go back and update RouteLogic afterwards just to keep the records complete. More and more, they’re also trying the competitor’s simpler app for day-to-day dispatch.
+- **Problem hook, summarize the business risk and user pain into one urgent sentence.:** We must stop enterprise churn and the slide into being seen as “admin software” by giving frontline dispatchers back a fast, focused way to coordinate their fleet in real time, which today is buried under features that only 5% of users need.
+- **Value proposition, based on the proposed initiative (Spotlight or Velocity), what is the new value and why is it urgent to launch now?:** For frontline fleet coordinators, we will deliver a fast default workspace built around live dispatch, with the enterprise features kept out of the way but still available to admins. It’s urgent because our largest account is trialing a competitor now. Every month of delay hands the competitor proof that simplicity beats power and puts our biggest renewal at risk.
 
-## 1. Chosen scenario
-
-**Path:** _StreamLine Spotlight (B2C) · RouteLogic Velocity (B2B) · my own initiative_
-
-_One line on why you picked it._
-
-## 2. The strategic crisis
-
-_The big-picture business risk. If the company does nothing for 12 months, what happens to its market position?_
-
-> If we do nothing for 12 months, the company will…
-
-## 3. The moment of misery
-
-_The specific point where the product fails the user, forcing a manual workaround (Google, spreadsheets, group texts, a competitor)._
-
-> The user is currently forced to…
-
-## 4. Problem hook
-
-_One urgent sentence fusing the business risk and the user pain, your pitch for why this is the most important thing to work on right now._
-
-> We must solve [business risk] by addressing [user pain]…
-
-## 5. Value proposition
-
-_Who it's for, the new value, and why it's urgent to launch now._
-
-> For **[who]**, we will **[value]** because **[urgent why]**.
-
-## 6. Cold-read self-review
-
-_Read your hook back as a skeptical stakeholder. If you don't feel the urgency, that's your data._
-
-| Question | Your answer |
-|---|---|
-| Is the business risk high-stakes enough to justify a new initiative? | _____ |
-| Is the moment of misery systemic, or just an edge case? | _____ |
-| Does the value proposition actually remove the obstacle? | _____ |
-
-## 7. Finalized hypothesis _(complete in Module 3)_
-
-> Based on [qual + quant evidence], I believe that [solving X] for [persona] will result in [outcome], as measured by a [X%] change in [success metric]. I will protect [guardrail metric] and make a go/no-go decision after [decision window].
-
-## Link to full artifact
-
-_[link to your Problem Hook Builder export]_
+## Cold-read your own hook
+- **Is the business risk high enough to justify a new initiative, a high-stakes threat, or a minor inconvenience?:** Yes, this is a high-stakes threat, not a minor inconvenience. Our largest account is actively trialing a competitor, and usage among our core frontline users is dropping. Being honest, though, my hook leans on a chain I haven’t proven: “one big account leaves, so others follow.” A sceptical stakeholder would ask what share of revenue that account represents and whether other accounts show the same warning signs. Without those numbers the urgency rests on narrative. I should put a number on it, such as “X% of ARR at risk this renewal cycle
+- **Is the moment of misery a systemic problem or just an edge case?:** It’s systemic. The brief says 95% of users depend on the core daily, and the decline is among the people who coordinate the fleet in real time, so this is the main way the product gets used, not a niche one. The weak spot is that the specific workarounds I described (spreadsheets, WhatsApp, entering everything again afterwards) are my assumptions, not findings. They sound right, but I need user research or usage data to confirm them before I build a strategy on them.
+- **Does the value proposition actually remove the obstacle you identified, or is it a generic feature?:** Only partly. “A fast default workspace with enterprise features hidden” deals with the clutter, but on a cold read it sounds a bit like a generic UI refresh. My own moment of misery points to the sharper problem: dispatchers coordinate outside the tool and then enter it all again. A stronger value proposition would promise to end that double entry, so users can handle a live change entirely inside RouteLogic faster than with a phone call. Hiding features is how we’d get there. It isn’t the value itself.

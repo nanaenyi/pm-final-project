@@ -1,11 +1,11 @@
-# Strategic Discovery Map
-
-> **Module 1 · Lab 1.** Repo file `01-product-thinking/strategic-map.md` — part of your submission.
-> Do the lab in the **Module 1 · Exercise 1 Guide** (linked from the Module 1 deck), then click **⬇ Download .md** — it saves as this exact file. Commit it here.
-> It's the discovery groundwork behind your `problem-hook.md`.
+# Strategic Discovery Map (Module 1)
 
 ## Responses
+- **Write one feature from the map that, if an engineer asked “why is this a priority for our 12-week roadmap?”, you honestly could not give a strategic answer for.:** Daily goals and streaks. It feels like a nice to have to gamify the app but is hard to justify prioritizing
+- **Write one feature that looks “correct” for the app but has zero strategic weight, you have no idea if it helps the company make money or whether a single user actually asked for it.:** streaks and charts lok good. Gamifying apps is a way to drive retention and engagement, however, in comparison to the other features , it is hard to justify prioritising
+- **Compare V3 to your Step 1 baseline. What changed, and is the output objectively better, did the AI get smarter, or did your added PM knowledge (JTBD, effort/impact, retention) force it to be useful?:** V3 is the same model as Step 1, no smarter. What changed was the prompt. Step 1 asked for a mind map, so I listed broad categories with no audience, priorities or tradeoffs. V3 named a role, a specific audience, a purpose (a discovery sprint), and frameworks: jobs-to-be-done, effort vs. impact, monetisation tradeoffs, retention risks and strategic tensions. Each framework forced a decision. I couldn’t fill in an effort-vs-impact grid without ranking ideas, or flag a tension without finding one. So yes, your PM knowledge is what made the output useful. The AI filled in the structure you gave it.
 
-- **Feature with no strategic answer (why is this a 12-week priority?):** _(not filled in)_
-- **Feature that looks "correct" but has zero strategic weight:** _(not filled in)_
-- **V3 vs your Step 1 baseline — what changed, and was it your PM knowledge that forced usefulness?:** _(not filled in)_
+V3 is better for its purpose, but not better in every way. It’s denser and less glanceable than the simpler versions, which makes it a worse slide for explaining what a mind map is. Its rankings are guesses that sound confident, not findings backed by research, so treat them as hypotheses to test. And it only covers the angles the prompt named, so anything your frameworks missed, like health-data privacy, stays missing. There’s also a flaw in the experiment: Step 1 wasn’t a clean baseline, because I could still see our earlier discussion of discovery maps. For a fair comparison in class, run each prompt in a separate new chat.
+- **Key takeaway: how does this prove the PM’s role is to think while the AI’s role is to execute?:** The experiment shows that output quality depended on the thinking that went into the prompt, not on the model. The model was the same every time. Step 1 had no framing, so the output was generic. V3 carried the PM’s judgement: who the user is, what decision the sprint has to inform, which frameworks reveal tradeoffs, and that the tensions matter. With that judgement in place, the same AI produced something a team could act on. The AI turned the PM’s framing into a finished artifact quickly. Deciding what to ask, and why it mattered, was the PM’s contribution.
+
+“Prove” is too strong, though, and the split isn’t that clean. The AI did some real thinking inside the frame, like spotting the success paradox. What it didn’t do was pick the frame, check its guesses against real users, or own the decision. So the better lesson for students is that the PM sets direction and judges quality, while the AI speeds up everything in between. A PM who hands over the thinking gets fast, confident, generic output.
