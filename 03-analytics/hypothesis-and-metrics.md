@@ -1,17 +1,41 @@
-# Hypothesis & Success Metrics
+# Hypothesis & Success Metrics (Module 3)
 
-> **Module 3 · ★ Deliverable 3.** Repo file `03-analytics/hypothesis-and-metrics.md` — part of your submission.
-> Do the lab in the **Module 3 · Exercise Guide** (linked from the Module 3 deck), then click **⬇ Download .md** — it saves as this exact file. Commit it here.
-> It feeds the **Problem, Value & Hypothesis** slide of your Module 6 final deck.
+## Pre-work · Hypothesis check
+- **Role , who you are solving for (from M2):** Frontline fleet dispatchers at regional delivery and 3PL fleets, who coordinate drivers in real time during the shift. They're the people who use RouteLogic most heavily, and their usage is falling fastest.
+- **Goal , what this user is ultimately trying to achieve:** To see where every driver really is and push route changes to them instantly, so every delivery gets done on time without chasing drivers outside the system.
+- **Friction / moment of misery , the specific pain blocking their goal:** When a dispatcher reassigns a route, it takes 10 to 15 minutes to reach the driver, with no push notification, so drivers act on outdated routes. Driver status takes up to an hour to show on the dashboard. The dispatcher can't trust the board, so they run the fleet through a WhatsApp group "as the real system" (UXR-02, UXR-09, BUG-2044, BUG-2072).
+- **Current workaround , the external tool or manual process they rely on (M2):** A WhatsApp group (the "real system"), text messages from drivers confirming deliveries, and phone calls to read routes back to drivers when the app crashes. Process: reassign the route in RouteLogic, post the same change in WhatsApp straight away, wait for the driver to confirm (and call if they don't), track real progress from driver texts instead of the dashboard, then reconcile RouteLogic with the chat later.
+- **Problem Hook , your one-sentence framing of the business crisis (M1):** We must stop enterprise churn and the slide into being seen as "admin software" by giving frontline dispatchers back a fast, focused way to coordinate their fleet in real time, which today is buried under features that only 5% of users need.
+- **Value Proposition , the outcome your initiative promised to deliver (M1):** For frontline fleet coordinators, we will deliver a fast default workspace built around live dispatch, with the enterprise features kept out of the way but still available to admins. It's urgent because our largest account is trialing a competitor now. Every month of delay hands the competitor proof that simplicity beats power and puts our biggest renewal at risk.
 
-## Finalized product hypothesis
+## Read your data snapshots
+- **Does the funnel data confirm your M2 friction point, or does it tell a different story? Note where the numbers align with the qualitative pain you found and where they diverge.:** _(not filled in)_
+- **Do the retention patterns align with the workaround your M2 persona used to find content? Note what the Mo. 0→1 drop suggests about the onboarding experience your persona described as frustrating.:** _(not filled in)_
+- **Does the LTV gap and the content mix (61% trending for Wanderers) confirm the moment of misery your persona described? Note which segment your persona is in and whether the data confirms their pain.:** _(not filled in)_
+- **Does the low adoption confirm your persona is burdened by tools they don’t use? Note whether the low scheduling adoption (42%) for coordinators matches your M2 moment of misery.:** Partly. Coordinators do cluster on the core: Live Dispatch Board at 91%, Route Optimizer at 85% and Compliance at 77%. Everything else is low (Financial Reporting 8%, AI ETAs 23%). That supports my hook's claim that frontline users carry features they don't need. But the 42% scheduling figure doesn't match my M2 moment of misery. M2 was about reroute lag and the WhatsApp workaround, and scheduling never came up. The pivot check also applies: my persona is highly active in Live Dispatch (91%), the area where I placed their friction. High use doesn't prove they're satisfied, since they could use it daily and still not trust it, but this snapshot alone doesn't confirm my friction.
+- **Does the workflow data match the manual process or hack you documented in M2? Note whether the specific drop-offs or time gaps explain why your persona avoids the digital tool.:** Only loosely. Route assignment, the step closest to my M2 workaround, is slow: 8.2 minutes against a 4.0-minute benchmark, with 71% completion. That's consistent with friction at that point. But the biggest gaps are at steps M2 never covered: compliance checks (+11.6 min, nearly 5× the benchmark), shift handoff (+6.8 min) and daily report (+6.7 min). The data also doesn't measure sync lag or WhatsApp use, so it can't confirm my workaround. It points to a different bottleneck, compliance logging, which my research notes never mentioned. One small inconsistency in the snapshot: it says 69% abandon "after Route Assignment," but 69% is actually the share that never reaches shift handoff. The drop from route assignment to compliance is 23 points.
+- **Look at the CSAT heatmap. Which specific cell most directly maps to your persona’s friction? Note how the NPS trend justifies the urgency of your M1 Problem Hook.:** The cell that maps to my friction is Coordinators × Core Dispatch, and it scores 4.1, which is strong. That triggers the pivot check. My persona is fairly satisfied with the area I targeted. Their weak cells are Reporting (1.3), Compliance (2.2) and Scheduling (2.6). The NPS trend strongly supports my hook's urgency:
 
-> Based on [qual + quant evidence], I believe that [solving X] for [persona] will result in [outcome], as measured by a [X%] change in [success metric]. I will protect [guardrail metric] and make a go/no-go decision after [decision window].
+Coordinator NPS fell from +18 to −12, a 30-point drop.
+Time lost to manual workarounds rose from about 9 to 31 minutes a day.
+4 of 5 churning accounts now cite complexity, compared with 1 of 8 two years ago.
 
-## Success metrics
+The "admin software" crisis is real. But the data suggests the pain comes mainly from compliance, handoff and reporting, not the reroute sync lag I focused on.
 
-| Metric | Type | Target | Why it matters |
-|---|---|---|---|
-| _North-star_ | | _____ | _____ |
-| _Leading indicator_ | | _____ | _____ |
-| _Guardrail_ | | _____ | _____ |
+## Step 3 · Craft your hypothesis
+- **Qualitative evidence (from M2) , quote the specific friction / moment of misery for your persona:** "I reassign a route and the driver doesn't see it for ten, fifteen minutes. By then they've driven the wrong way. We keep a WhatsApp group as the real system." (UXR-02, fleet dispatcher), supported by BUG-2044: reassignments take 8 to 15 minutes to reach drivers, and there's no push notification.
+- **Quantitative evidence (from M3) , name the metric or data point that confirms the pain; cite the number:** Route assignment takes coordinators 8.2 minutes against a 4.0-minute benchmark (+4.2 min).
+Only 71% of coordinators complete that step, down from 94% who load the fleet view.
+Time lost to manual workarounds has risen from about 9 to 31 minutes a day.
+The Velocity pilot has already shown route assignment running 34% faster.
+- **Persona , role, goal, and the friction you confirmed in the reconciliation steps:** Frontline fleet coordinators at regional delivery and 3PL fleets. Their goal is to see where every driver is and push route changes instantly, without chasing drivers outside the system. The confirmed friction is that assigning and reassigning routes is slow and unreliable, so coordinators fall back on WhatsApp to make sure changes land.
+- **Problem you are solving , one sentence describing the specific friction this initiative removes:** Coordinators can't assign or reroute drivers quickly and confidently inside RouteLogic, so they duplicate every change in WhatsApp.
+- **Strategic outcome , what behaviour change do you expect, and how does it map to retention / revenue / churn?:** Coordinators finish route changes inside RouteLogic rather than in WhatsApp. That should cut the 31 minutes a day lost to workarounds, start recovering coordinator NPS (currently −12) and reduce complexity-driven churn. That protects renewals, starting with our largest account.
+- **Primary success metric (initiative signal) , the leading indicator that tells you the gap is closing:** Average time for a coordinator to assign or reassign a route, from 8.2 minutes to the 4.0-minute benchmark, with the step's completion rate rising above 71%.
+- **Guardrail metric (product signal) , the metric that must NOT drop; it protects your existing base:** Manager adoption of the Financial Reporting Suite (86%) and manager CSAT for Reporting (4.5) must not fall. Velocity hides enterprise features from frontline users, and it can't do that at the expense of the buyers who pay for them.
+- **Decision window , how much time or data before you scale, pivot, or kill? minimum threshold to proceed?:** A 6-week pilot with the accounts already in the Velocity pilot. These thresholds are my judgement, not figures from the data:
+
+Scale if route assignment reaches 4.0 minutes or less and the guardrails hold.
+Pivot if assignment speeds up but daily time lost to workarounds doesn't fall. That would point to compliance or handoff as the real drain.
+Kill if the speed gain stays below the pilot's existing 34%.
+- **Draft your full hypothesis sentence , one to three sentences; quote the metric, name the persona, name the outcome:** Based on dispatchers' reports that reroutes take 10–15 minutes to reach drivers, forcing them to run the fleet through a WhatsApp group (UXR-02, BUG-2044), and on data showing route assignment takes 8.2 minutes against a 4.0-minute benchmark, I believe that making route changes fast and instantly delivered for frontline fleet coordinators will result in coordinators completing reroutes inside RouteLogic instead of WhatsApp, as measured by a 51% reduction in average route-assignment time (from 8.2 to 4.0 minutes). I will protect manager adoption of the Financial Reporting Suite (86%) and manager Reporting CSAT (4.5), and will make a go/no-go decision after a 6-week pilot.
