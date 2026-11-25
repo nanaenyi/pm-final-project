@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RouteLogic Velocity · Roadmap</title>
+<style>
+  :root{
+    --bg:#f6f5f1;--surface:#ffffff;--ink:#1d1d1b;--muted:#6b6a64;--line:#e3e1d9;
+    --qw:#1d9e75;--qw-bg:#e1f5ee;--mp:#534ab7;--mp-bg:#eeedfe;
+    --fi:#185fa5;--fi-bg:#e6f1fb;--ts:#a32d2d;--ts-bg:#fcebeb;
+    --now:#0f6e56;--next:#534ab7;--later:#5f5e5a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  header{padding:32px 40px 8px}
+  .eyebrow{font-size:13px;color:var(--muted);letter-spacing:.02em}
+  h1{margin:4px 0 6px;font-size:28px;font-weight:600}
+  .sub{color:var(--muted);font-size:14px;margin:0}
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:16px 40px}
+  .toolbar span{font-size:13px;color:var(--muted);margin-right:4px}
+  .chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;color:var(--ink)}
+  .chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .board{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:8px 40px 24px}
+  .lane{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;min-height:200px}
+  .lane-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px solid var(--c);padding-bottom:10px;margin-bottom:14px}
+  .lane-title{font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--c)}
+  .lane-when{font-size:12px;color:var(--muted)}
+  .count{font-size:12px;color:var(--muted)}
+  .card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:12px;cursor:pointer;transition:border-color .15s, transform .15s;background:#fff}
+  .card:hover{border-color:#b4b2a9;transform:translateY(-1px)}
+  .card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+  .id{font-size:12px;color:var(--muted);font-weight:600}
+  .name{font-weight:600;font-size:15px;margin:2px 0 0}
+  .badge{font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px;white-space:nowrap}
+  .Quick{color:var(--qw);background:var(--qw-bg)}
+  .Major{color:var(--mp);background:var(--mp-bg)}
+  .Fill{color:var(--fi);background:var(--fi-bg)}
+  .Time{color:var(--ts);background:var(--ts-bg)}
+  .tag{display:inline-block;font-size:11px;margin-top:8px;padding:2px 7px;border-radius:6px;background:#faeeda;color:#854f0b;font-weight:600}
+  .tag.m2{background:#e1f5ee;color:#085041}
+  .rationale{font-size:13px;color:#3d3d3a;margin-top:8px;display:none}
+  .card.open .rationale{display:block}
+  .hint{font-size:12px;color:var(--muted);margin-top:6px}
+  .card.open .hint{display:none}
+  .card.dim{opacity:.25}
+  .cut{margin:0 40px 32px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+  .cut summary{list-style:none;cursor:pointer;padding:16px;display:flex;justify-content:space-between;align-items:center;font-weight:600}
+  .cut summary::-webkit-details-marker{display:none}
+  .cut summary .arrow{transition:transform .2s;color:var(--muted)}
+  .cut[open] summary .arrow{transform:rotate(90deg)}
+  .cut-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;padding:0 16px 16px}
+  .cut .card{background:#fafaf7}
+  .cut .name{text-decoration:line-through;text-decoration-color:#c9c7bd}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;padding:0 40px 32px;font-size:12px;color:var(--muted)}
+  footer{padding:0 40px 32px;font-size:12px;color:var(--muted)}
+  @media (max-width:900px){.board{grid-template-columns:1fr}header,.toolbar,.board,.legend,footer{padding-left:20px;padding-right:20px}.cut{margin:0 20px 32px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">RouteLogic Velocity · 2 engineers + 1 designer + 1 CS lead</div>
+  <h1>Now / Next / Later roadmap</h1>
+  <p class="sub">North Star: cut coordinator route assign/reassign time from 8.2 to 4.0 min, while protecting manager Reporting adoption (86%) and CSAT (4.5).</p>
+</header>
+
+<div class="toolbar">
+  <span>Filter by quadrant:</span>
+  <button class="chip active" data-f="all">All</button>
+  <button class="chip" data-f="Quick">Quick Win</button>
+  <button class="chip" data-f="Major">Major Project</button>
+  <button class="chip" data-f="Fill">Fill-In</button>
+  <button class="chip" data-f="Time">Time Sinker</button>
+  <button class="chip" id="expand">Expand all</button>
+</div>
+
+<main class="board" id="board"></main>
+
+<details class="cut" id="cut">
+  <summary><span>✂ Cut list <span class="count" id="cutCount"></span></span><span class="arrow">▶</span></summary>
+  <div class="cut-grid" id="cutGrid"></div>
+</details>
+
+<div class="legend">
+  <span><span class="badge Quick">Quick Win</span> high value, low effort</span>
+  <span><span class="badge Major">Major Project</span> high value, high effort</span>
+  <span><span class="badge Fill">Fill-In</span> low value, low effort</span>
+  <span><span class="badge Time">Time Sinker</span> low value, high effort</span>
+</div>
+<footer>Click any card to see the rationale. Quadrants: Value 4–5 = high, Effort 1–2 = low.</footer>
+
+<script>
+const lanes=[
+  {key:"now",title:"NOW",when:"Pilot · 4 weeks, 3 accounts",c:"var(--now)"},
+  {key:"next",title:"NEXT",when:"GA release · weeks 5–8",c:"var(--next)"},
+  {key:"later",title:"LATER",when:"Backlog",c:"var(--later)"}
+];
+const items=[
+  {id:"B6",name:"Driver Alert Notifications",q:"Major Project",lane:"now",tag:"Override",r:"The only feature that moves my metric, fixing the 10–15 min reroute delay (UXR-02, BUG-2044)."},
+  {id:"B11",name:"Real-Time Status Sync",q:"Major Project",lane:"next",tag:"Added from M2 research",m2:true,r:"Fixes driver status lagging up to an hour, so dispatchers can trust the board (UXR-09, BUG-2072)."},
+  {id:"B1",name:"One-Click Compliance Checklist",q:"Time Sinker",lane:"later",tag:"Override",r:"Biggest time gap in M3 (+11.6 min, CSAT 2.2); likely the next initiative."},
+  {id:"B5",name:"Step Progress Indicator",q:"Fill-In",lane:"later",r:"Cheap, but doesn't speed up route assignment."},
+  {id:"B9",name:"Compliance Audit Trail Export",q:"Fill-In",lane:"later",r:"A Legal/CS request; low cost, but no help mid-shift."},
+  {id:"B10",name:"In-App Coordinator Training",q:"Fill-In",lane:"later",r:"The CS lead can train 3 pilot accounts by hand for now."},
+  {id:"B2",name:"Smart Daily Report Auto-Fill",q:"Time Sinker",lane:"cut",r:"Unrelated to routing, and it risks the Reporting guardrail."},
+  {id:"B3",name:"Shift Handoff Wizard",q:"Time Sinker",lane:"cut",r:"A different step from my metric."},
+  {id:"B4",name:"Mobile-First Coordinator Dashboard",q:"Time Sinker",lane:"cut",r:"Too big; its useful part, 2-tap reassignment, is folded into B6."},
+  {id:"B7",name:"Contextual AI ETA Display",q:"Time Sinker",lane:"cut",r:"11% adoption, and ETAs built on stale status can't be trusted."},
+  {id:"B8",name:"Fleet Analytics Manager View",q:"Time Sinker",lane:"cut",r:"A Sales request for managers, who are already satisfied with Reporting (CSAT 4.5)."}
+];
+const cls=q=>q.split(/[ -]/)[0];
+function card(i){
+  const d=document.createElement("div");
+  d.className="card";d.dataset.q=cls(i.q);
+  d.innerHTML=`<div class="card-top"><div><div class="id">${i.id}</div><div class="name">${i.name}</div></div><span class="badge ${cls(i.q)}">${i.q}</span></div>`+
+    (i.tag?`<span class="tag ${i.m2?"m2":""}">${i.tag}</span>`:"")+
+    `<div class="rationale">${i.r}</div><div class="hint">Click for rationale</div>`;
+  d.onclick=()=>d.classList.toggle("open");
+  return d;
+}
+const board=document.getElementById("board");
+lanes.forEach(l=>{
+  const list=items.filter(i=>i.lane===l.key);
+  const el=document.createElement("section");
+  el.className="lane";el.style.setProperty("--c",l.c);
+  el.innerHTML=`<div class="lane-head"><div><div class="lane-title">${l.title}</div><div class="lane-when">${l.when}</div></div><div class="count">${list.length} item${list.length===1?"":"s"}</div></div>`;
+  list.forEach(i=>el.appendChild(card(i)));
+  board.appendChild(el);
+});
+const cuts=items.filter(i=>i.lane==="cut");
+document.getElementById("cutCount").textContent=`· ${cuts.length} items`;
+const cg=document.getElementById("cutGrid");cuts.forEach(i=>cg.appendChild(card(i)));
+document.querySelectorAll(".chip[data-f]").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".chip[data-f]").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  const f=b.dataset.f;
+  document.querySelectorAll(".card").forEach(c=>c.classList.toggle("dim",f!=="all"&&c.dataset.q!==f));
+  if(f==="Time")document.getElementById("cut").open=true;
+});
+let expanded=false;
+document.getElementById("expand").onclick=e=>{
+  expanded=!expanded;
+  document.querySelectorAll(".card").forEach(c=>c.classList.toggle("open",expanded));
+  e.target.textContent=expanded?"Collapse all":"Expand all";
+};
+</script>
+</body>
+</html>
