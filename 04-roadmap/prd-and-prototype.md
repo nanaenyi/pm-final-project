@@ -67,3 +67,7 @@ With Velocity Driver Alerts, a coordinator reassigns a stop in two taps. The dri
 
 ---
 **Builder hook:** Build a working prototype based on this PRD. Use the User Story as the core flow, Functional Requirements as build constraints, and prioritize speed and clarity over visual complexity.
+
+
+
+https://claude.ai/artifact/7dKwzF9fCsDnhednX5Rqx7
